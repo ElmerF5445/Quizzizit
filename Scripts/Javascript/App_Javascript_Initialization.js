@@ -5,13 +5,13 @@
 /* App Information */
 let App_Info = {
     // Title of the project
-    Title: "ERUMA UI",
+    Title: "Quizzizit!",
     // Title of the project's version
     Version_Title: "BETA 1.0",
     // Version number
     Version_Number: "1.0",
     // Latest compilation date of the project
-    Version_CompilationDate: "20 January 2024",
+    Version_CompilationDate: "16 February 2024",
     // Copyright text that appears in certain menu and screen elements
     Copyright_Title: "Content By ElmerF 2024",
     // Content By ElmerF logo
@@ -57,9 +57,9 @@ let App_HideElements = [];
 
 /* Page navigation */
 // Arrays of titles, IDs, and icons for the page navigation menu
-let App_PageNavigation_Titles = ["App Template", "Color Tester", "Settings"];
-let App_PageNavigation_Links = ["App_Template.html", "App_ColorTester.html", "App_UniversalSettings.html"];
-let App_PageNavigation_Icons = ["Assets/Icons/icon_home.png", "Assets/Icons/iconNew_customization.png", "Assets/Icons/icon_settings.png"];
+let App_PageNavigation_Titles = ["Home"];
+let App_PageNavigation_Links = ["Pages/QI_Home.html"];
+let App_PageNavigation_Icons = ["Assets/Icons/icon_home.png"];
 
 var path = window.location.pathname;
 var App_CurrentPageName = path.split("/").pop();
@@ -88,18 +88,21 @@ function Startup_Page_ChangeConfigurations(){
             // App_Property.UseFullContainer = true;
             App_HideElements = [];
         break;
-        case "App_ColorTester.html":
-            App_Property.Page_Title = "Color Tester";
-            App_Property.Page_Icon = "Assets/Icons/iconNew_customization.png";
-            App_Property.LoadingScreen_Style = 1;
+        case "QI_Home.html":
+            App_Property.Page_Title = "Home";
+            App_Property.Page_Icon = "Assets/Icons/Quizzizit_Logo_Square.png";
+            App_Property.LoadingScreen_Style = 3;
             App_Property.Sidebar_UseTabs = false;
-            App_Property.Sidebar_PushContentWhenExpanded = true;
-            App_HideElements = ["Ribbon"];
+            App_HideElements = ["Header_SidebarToggle", "Header", "Ribbon", "Sidebar"];
         break;
-        case "App_UniversalSettings.html":
-            App_Property.Page_Title = "Settings";
-            App_Property.Page_Icon = "Assets/Icons/icon_settings.png";
-            App_Property.LoadingScreen_Style = 1;
+        case "QI_Quiz_Create.html":
+            App_Property.Page_Title = "Quiz Builder";
+            App_Property.Page_Icon = "Assets/Icons/Quizzizit_Logo_Square.png";
+            App_Property.LoadingScreen_Style = 3;
+            App_Property.Sidebar_UseTabs = true;
+            App_Property.Sidebar_HideWhenCollapsed = true;
+            App_Property.Sidebar_PushContentWhenExpanded = true;
+            App_HideElements = [];
         break;
     }
     Startup_Page_ApplyConfigurations();

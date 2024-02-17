@@ -1,0 +1,50 @@
+.LoadingScreen_Custom{
+    display: grid;
+    grid-template-rows: 1fr 80px;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    background-color: var(--Accent-Color-Focus);
+}
+
+.QI_LoadingScreen_Logo{
+    width: 300px;
+}
+
+.LoadingScreen_Custom > .LoadingScreen_Simple_Bottom > .General_Loading > .General_Loading_Bar{
+    background-color: white;
+}
+
+.QI_Home_Title{
+    font-size: 4em;
+    margin-bottom: 0;
+}
+
+.QI_Home_Subtitle{
+    font-size: 2em;
+    margin-top: 0;
+}
+
+.QI_Home_Selector{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 15px;
+    padding-bottom: 25px;
+}
+
+.QI_Home_Selector_Item{
+    margin-bottom: 30px;
+}
+
+.QI_Home_Selector_Item_Icon{
+    height: 100px;
+}
+
+.QI_Home_Selector_Item_Title{
+    font-family: var(--Text-Font-Primary);
+    margin: 0;
+}
+
+.QI_Home_Selector_Item_Text{
+    margin: 10px;
+}
