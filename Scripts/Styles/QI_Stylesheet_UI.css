@@ -48,3 +48,29 @@
 .QI_Home_Selector_Item_Text{
     margin: 10px;
 }
+
+.QIQB_QuizItem_Question{
+    resize: vertical;
+    background-color: unset;
+    transition: all var(--Element-Transition-Delay) ease-in-out, height 0s;
+    font-family: var(--Text-Font-Primary);
+    color: white;
+    font-size: 1.5em;
+}
+
+.QIQB_QuizItem_Controls{
+    display: grid;
+    grid-template-columns: 1fr 40px;
+    align-items: center;
+}
+
+.QIQB_QuizItem_Controls_Icon{
+    width: 25px;
+    padding: 5px;
+    cursor: pointer;
+    border-radius: 3px;
+}
+
+.QIQB_QuizItem_Controls_Icon:hover{
+    background-color: var(--Accent-Color);
+}

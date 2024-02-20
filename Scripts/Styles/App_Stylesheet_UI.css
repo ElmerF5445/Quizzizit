@@ -916,6 +916,7 @@ body{
     display: flex;
     flex-direction: column;
     position: unset;
+	padding-bottom: 50px;
 }
 
 .Sidebar{
@@ -1285,20 +1286,30 @@ body{
 	padding: 10px;
 	height: 25px;
 	border-radius: 5px;
-	width: calc(100% - 20px);
-	
+	width: calc(100% - 26px);
 	transition: var(--Element-Transition-Delay);
+
+	border-style: solid;
+	border-width: 3px;
+	border-color: var(--BG-Color-Button-General-Accent);
+	border-bottom-color: var(--BG-Color-Button-General-Accent-Hover);
 }
 
 .Input_Text:hover{
 	box-shadow: var(--Element-BoxShadow);
 	background-color: var(--BG-Color-Input-Hover);
-	border-bottom-color: var(--BG-Color-Input-Accent-Hover);
+	border-color: var(--BG-Color-Button-General-Accent-Hover);
 }
 
 .Input_Text:focus{
-	background-color: var(--BG-Color-Input-Focus);
-	border-bottom-color: var(--BG-Color-Input-Accent-Focus);
+	background-color: var(--BG-Color-Button-General-Focus);
+	border-color: var(--BG-Color-Input-Accent);
+	/* box-shadow: var(--Element-BoxShadow-Hover); */
+}
+
+.Input_Text:focus:hover{
+	border: solid var(--BG-Color-Button-Dropdown-Accent-Hover);
+	/* background-color: var(--BG-Color-Button-General-Accent-Focus); */
 	box-shadow: var(--Element-BoxShadow-Hover);
 }
 
@@ -1316,22 +1327,33 @@ body{
 	padding: 10px;
 	height: 250px;
 	border-radius: 5px;
-	width: calc(100% - 20px);
+	width: calc(100% - 26px);
 	
 	transition: var(--Element-Transition-Delay);
     transition: all var(--Element-Transition-Delay) ease-in-out, height 0s;
 	resize: vertical;
+	border-style: solid;
+	border-width: 3px;
+	border-color: var(--BG-Color-Button-General-Accent);
+	border-bottom-color: var(--BG-Color-Button-General-Accent-Hover);
 }
 
 .Input_Text_Long:hover{
-	background-color: var(--BG-Color-Input-Hover);
-	border-bottom-color: var(--BG-Color-Input-Accent-Hover);
 	box-shadow: var(--Element-BoxShadow);
+	background-color: var(--BG-Color-Input-Hover);
+	border-color: var(--BG-Color-Button-General-Accent-Hover);
 }
 
 .Input_Text_Long:focus{
-	background-color: var(--BG-Color-Input-Focus);
-	border-bottom-color: var(--BG-Color-Input-Accent-Focus);
+	background-color: var(--BG-Color-Button-General-Focus);
+	border-color: var(--BG-Color-Input-Accent);
+	/* box-shadow: var(--Element-BoxShadow-Hover); */
+}
+
+.Input_Text_Long:focus:hover{
+	border: solid var(--BG-Color-Button-Dropdown-Accent-Hover);
+	/* background-color: var(--BG-Color-Button-General-Accent-Focus); */
+	box-shadow: var(--Element-BoxShadow-Hover);
 }
 
 .Input_Color{
@@ -1340,6 +1362,34 @@ body{
 	width: 50px;
 	height: 50px;
 }
+
+.Input_Form{
+	display: grid;
+	grid-template-columns: auto;
+	grid-template-rows: auto;
+	grid-gap: 10px;
+	align-items: center;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
+.Input_Form[Label_Position="Top"] > .Input_Label{
+	transform: translateY(5px);
+}
+
+.Input_Form[Label_Position="Left"]{
+	display: grid;
+	grid-template-columns: auto 1fr;
+	/* grid-template-rows: auto; */
+	grid-gap: 10px;
+}
+
+.Input_Label{
+	font-family: var(--Text-Font-Secondary);
+	color: var(--Text-Color);
+}
+
+
 
 .Subwindows{
 	position: fixed;

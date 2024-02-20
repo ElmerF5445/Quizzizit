@@ -245,6 +245,10 @@ function Startup_Page_AdditionalFunctions(){
         Element_Attribute_Set("MainContent", "Style_Margin_Sidebar", "Disabled");
         Element_Attribute_Set("Ribbon", "Style_Margin_Sidebar", "Disabled");
         Element_Attribute_Set("Sidebar", "State", "Collapsed_Hide");
+    } else {
+        Element_Attribute_Set("MainContent", "Style_Margin_Sidebar", "Enabled");
+        Element_Attribute_Set("Ribbon", "Style_Margin_Sidebar", "Enabled");
+        Element_Attribute_Set("Sidebar", "State", "Collapsed");
     }
     Startup_Page_FinishInitialization();
 }
