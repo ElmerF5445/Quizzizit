@@ -430,34 +430,39 @@
                     </div>
                 </div>
                 <div class="Tab_Container_Content_Item Content_Item" id="Tab_QuizProper">
-                    <div class="QIQB_QuizItem">
-                        <div class="QIQB_QuizItem_Controls">
-                            <p class="Input_Label General_Title" for="BI_Quiz_Title">
-                                Question #1: 
-                            </p>
-                            <img class='QIQB_QuizItem_Controls_Icon' src='Assets/Icons/iconNew_delete.png' draggable='false' loading='lazy' onclick="Subwindows_Open('QIQB_ConfirmQuestionDeletion')"/>
-                        </div>
-                        
-                        <textarea type="text" class="Input_Text QIQB_QuizItem_Question" id="BI_Quiz_Title" autocomplete="off" placeholder="Question"></textarea>
+                    <div id="QIQB_Quiz">
+                        <!-- <div class="QIQB_QuizItem" id="1">
+                            <div class="QIQB_QuizItem_Controls">
+                                <p class="Input_Label General_Title QIQB_QuizItem_Number" for="BI_Quiz_Title">
+                                    Question #1: 
+                                </p>
+                                <img class='QIQB_QuizItem_Controls_Icon' src='Assets/Icons/iconNew_delete.png' draggable='false' loading='lazy' onclick="Subwindows_Open('QIQB_ConfirmQuestionDeletion')"/>
+                            </div>
+                            
+                            <textarea type="text" class="Input_Text QIQB_QuizItem_Question" id="BI_Quiz_Title" autocomplete="off" placeholder="Question"></textarea>
 
-                        <div class="Radio" id="Radio_1" Radio_ActiveButton="">
-                            <div class="Radio_Button" id="Radio_Button_1" onclick="Radio_Select(this.id)" State="Inactive">
-                                <div class="Radio_Button_Indicator"></div>
-                                <input type="text" class="Input_Text" placeholder="Choice 1"/>
+                            <div class="Radio" id="Radio_1" Radio_ActiveButton="">
+                                <div class="Radio_Button" id="Radio_Button_1" onclick="Radio_Select(this.id)" State="Inactive">
+                                    <div class="Radio_Button_Indicator"></div>
+                                    <input type="text" class="Input_Text" placeholder="Choice 1"/>
+                                </div>
+                                <div class="Radio_Button" id="Radio_Button_2" onclick="Radio_Select(this.id)" State="Inactive">
+                                    <div class="Radio_Button_Indicator"></div>
+                                    <input type="text" class="Input_Text" placeholder="Choice 2"/>
+                                </div>
+                                <div class="Radio_Button" id="Radio_Button_3" onclick="Radio_Select(this.id)" State="Inactive">
+                                    <div class="Radio_Button_Indicator"></div>
+                                    <input type="text" class="Input_Text" placeholder="Choice 3"/>
+                                </div>
+                                <div class="Radio_Button" id="Radio_Button_4" onclick="Radio_Select(this.id)" State="Inactive">
+                                    <div class="Radio_Button_Indicator"></div>
+                                    <input type="text" class="Input_Text" placeholder="Choice 4"/>
+                                </div>
                             </div>
-                            <div class="Radio_Button" id="Radio_Button_2" onclick="Radio_Select(this.id)" State="Inactive">
-                                <div class="Radio_Button_Indicator"></div>
-                                <input type="text" class="Input_Text" placeholder="Choice 2"/>
-                            </div>
-                            <div class="Radio_Button" id="Radio_Button_3" onclick="Radio_Select(this.id)" State="Inactive">
-                                <div class="Radio_Button_Indicator"></div>
-                                <input type="text" class="Input_Text" placeholder="Choice 3"/>
-                            </div>
-                            <div class="Radio_Button" id="Radio_Button_4" onclick="Radio_Select(this.id)" State="Inactive">
-                                <div class="Radio_Button_Indicator"></div>
-                                <input type="text" class="Input_Text" placeholder="Choice 4"/>
-                            </div>
-                        </div>
+                        </div> -->
+                    </div>
+                    <div class="General_Button" onclick="QIQB_Question_Add()">
+                        Add question
                     </div>
                 </div>
                 <div class="Tab_Container_Content_Item Content_Item" id="Tab_QuizPreview">

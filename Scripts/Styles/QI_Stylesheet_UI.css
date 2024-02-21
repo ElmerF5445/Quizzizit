@@ -15,9 +15,16 @@
     background-color: white;
 }
 
+.QI_Home_Logo{
+    width: 75%;
+    align-self: center;
+    margin-top: 30px;
+}
+
 .QI_Home_Title{
-    font-size: 4em;
+    font-size: 3em;
     margin-bottom: 0;
+    margin-top: 0;
 }
 
 .QI_Home_Subtitle{
@@ -49,6 +56,14 @@
     margin: 10px;
 }
 
+.QIQB_QuizItem{
+    border: solid rgba(89, 89, 89, 0.25) 2px;
+    border-radius: 5px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding: 10px;
+}
+
 .QIQB_QuizItem_Question{
     resize: vertical;
     background-color: unset;
@@ -58,10 +73,15 @@
     font-size: 1.5em;
 }
 
+.QIQB_QuizItem_Number{
+    margin: 0;
+}
+
 .QIQB_QuizItem_Controls{
     display: grid;
-    grid-template-columns: 1fr 40px;
+    grid-template-columns: 1fr 35px;
     align-items: center;
+    margin-bottom: 10px;
 }
 
 .QIQB_QuizItem_Controls_Icon{

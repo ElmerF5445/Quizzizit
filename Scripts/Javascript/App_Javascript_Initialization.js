@@ -93,6 +93,7 @@ function Startup_Page_ChangeConfigurations(){
             App_Property.Page_Icon = "Assets/Icons/Quizzizit_Logo_Square.png";
             App_Property.LoadingScreen_Style = 3;
             App_Property.Sidebar_UseTabs = false;
+            App_Property.Sidebar_HideWhenCollapsed = true;
             App_HideElements = ["Header_SidebarToggle", "Header", "Ribbon", "Sidebar"];
         break;
         case "QI_Quiz_Create.html":
