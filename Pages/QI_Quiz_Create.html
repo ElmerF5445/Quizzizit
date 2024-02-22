@@ -17,6 +17,7 @@
     <script src="Scripts/Javascript/App_Javascript_ERUMAUI.js" defer></script>
     <script src="Scripts/Javascript/App_Javascript_Extras.js" defer></script>
     <script src="Scripts/Javascript/App_Javascript_KeyboardControls.js" defer></script>
+    <script src="Scripts/FileSaver.js" defer></script>
     <script src="Scripts/Javascript/QI_Quiz_Builder.js" defer></script>
     <script src="Scripts/Javascript/App_Javascript_Initialization.js" defer></script>
     <div class="LoadingScreen" id="LoadingScreen">
@@ -178,6 +179,180 @@
 				</div>
 			</div>
 		</div>
+        <div class="Subwindow" id="QIQB_Question_Add_Rapid">
+            <div class="Subwindow_TitleBar">
+                <h2 class="Subwindow_TitleBar_Title">
+                    Add questions rapidly
+                </h2>
+                <img class='Subwindow_TitleBar_Close' src='Assets/Icons/icon_close.png' draggable='false' loading='lazy' onclick="Subwindows_Close(this.parentNode.parentNode.id)"/>
+            </div>
+            <div class="Subwindow_Content">
+                <p class="General_Paragraph">
+                    Press TAB to move to the next input box, Press CTRL+SPACE to set the focused item as the correct answer, and press SHIFT+SPACE to save the question.
+                </p>
+            </div>
+            <div class="Subwindow_Bottom">
+                <div class="Subwindow_Bottom_Button_SecondaryAction">
+                    Secondary action
+                </div>
+                <div class="Subwindow_Bottom_Button_PrimaryAction" onclick="Subwindows_Close('QIQB_Question_Add_Rapid')">
+                    Primary action
+                </div>
+            </div>
+        </div>
+        <div class="Subwindow" id="QIQB_Quiz_Download">
+            <div class="Subwindow_TitleBar">
+                <h2 class="Subwindow_TitleBar_Title">
+                    Download quiz as a file
+                </h2>
+                <img class='Subwindow_TitleBar_Close' src='Assets/Icons/icon_close.png' draggable='false' loading='lazy' onclick="Subwindows_Close(this.parentNode.parentNode.id)"/>
+            </div>
+            <div class="Subwindow_Content">
+                <p class="General_Paragraph">
+                    Make transferring quiz information easier by downloading the data as a file.
+                </p>
+                <form class="Input_Form" Label_Position="Top" autocomplete="off">
+                    <label class="Input_Label" for="QIQB_Quiz_Download_QuizTitle">
+                        File name:
+                    </label>
+                    <input type="text" class="Input_Text" id="QIQB_Quiz_Download_QuizTitle" autocomplete="off" placeholder="Quiz title (required)"/>
+
+                    <!-- <label class="Input_Label" for="QIQB_Quiz_Download_QuizDescription">
+                        Description: 
+                    </label>
+                    <textarea type="text" class="Input_Text_Long" id="QIQB_Quiz_Download_QuizDescription" autocomplete="off" placeholder="Quiz description"></textarea>
+
+                    <label class="Input_Label" for="QIQB_Quiz_Download_QuizAuthor">
+                        Author: 
+                    </label>
+                    <input type="text" class="Input_Text" id="QIQB_Quiz_Download_QuizAuthor" autocomplete="off" placeholder="Quiz author"/> -->
+                </form>
+                <div class="QIQB_Quiz_Download">
+                    <div>
+                        <p class="General_Paragraph">
+                            File type:
+                        </p>
+                        <div class="Dropdown">
+                            <div class="Dropdown_Button" State="Inactive" Dropdown_TargetList="QIQB_Quiz_Download_Dropdown_FileType_List" id="QIQB_Quiz_Download_Dropdown_FileType" onclick="Dropdown_ToggleList(this.id)">
+                                <span class="Dropdown_Button_Text"> Text file (.txt) </span>
+                                <img class='Dropdown_Button_Arrow' src='Assets/Icons/icon_downArrow.png' draggable='false' loading='lazy'/>
+                            </div>
+                            <div class="Dropdown_List" State="Inactive" id="QIQB_Quiz_Download_Dropdown_FileType_List" Dropdown_TargetButton = "QIQB_Quiz_Download_Dropdown_FileType">
+                                <p class="Dropdown_List_Item" onclick="Dropdown_SubmitValue(this.parentNode, this.innerText)">
+                                    Text file (.txt)
+                                </p>
+                                <p class="Dropdown_List_Item" onclick="Dropdown_SubmitValue(this.parentNode, this.innerText)">
+                                    JSON file (.json)
+                                </p>
+                            </div>
+                        </div>
+                        <p class="General_Paragraph">
+                            Refers to the file extension placed at the end of the downloaded file.
+                        </p>
+                    </div>
+                    <div>
+                        <p class="General_Paragraph">
+                            File format:
+                        </p>
+                        <div class="Dropdown">
+                            <div class="Dropdown_Button" State="Inactive" Dropdown_TargetList="QIQB_Quiz_Download_Dropdown_FileFormat_List" id="QIQB_Quiz_Download_Dropdown_FileFormat" onclick="Dropdown_ToggleList(this.id)">
+                                <span class="Dropdown_Button_Text"> Standard JSON </span>
+                                <img class='Dropdown_Button_Arrow' src='Assets/Icons/icon_downArrow.png' draggable='false' loading='lazy'/>
+                            </div>
+                            <div class="Dropdown_List" State="Inactive" id="QIQB_Quiz_Download_Dropdown_FileFormat_List" Dropdown_TargetButton = "QIQB_Quiz_Download_Dropdown_FileFormat">
+                                <p class="Dropdown_List_Item" onclick="Dropdown_SubmitValue(this.parentNode, this.innerText)">
+                                    Standard JSON
+                                </p>
+                                <!-- <p class="Dropdown_List_Item" onclick="Dropdown_SubmitValue(this.parentNode, this.innerText)">
+                                    ERUMA List
+                                </p> -->
+                                <p class="Dropdown_List_Item" onclick="Dropdown_SubmitValue(this.parentNode, this.innerText)">
+                                    Alex format
+                                </p>
+                            </div>
+                        </div>
+                        <p class="General_Paragraph">
+                            Refers to how the data is arranged and presented in the file.
+                        </p>
+                    </div>
+                </div>
+                
+                
+            </div>
+            <div class="Subwindow_Bottom">
+                <div class="Subwindow_Bottom_Button_SecondaryAction" onclick="Subwindows_Close('QIQB_Quiz_Download')">
+                    Cancel
+                </div>
+                <div class="Subwindow_Bottom_Button_SecondaryAction" onclick="Subwindows_Open('QIQB_Quiz_ViewQuizData'), QIQB_Quiz_FormatData()">
+                    Preview output data
+                </div>
+                <div class="Subwindow_Bottom_Button_PrimaryAction" onclick="QIQB_Quiz_DownloadFile()">
+                    Save quiz and download file
+                </div>
+            </div>
+        </div>
+        <div class="Subwindow" id="QIQB_Quiz_ViewQuizData">
+            <div class="Subwindow_TitleBar">
+                <h2 class="Subwindow_TitleBar_Title">
+                    Quiz data
+                </h2>
+                <img class='Subwindow_TitleBar_Close' src='Assets/Icons/icon_close.png' draggable='false' loading='lazy' onclick="Subwindows_Close(this.parentNode.parentNode.id)"/>
+            </div>
+            <div class="Subwindow_Content">
+                <p class="General_Paragraph">
+                    The formatting and arrangement of information depends on the File format you selected.
+                </p>
+                <textarea type="text" class="Input_Text_Long" placeholder="Quiz data will appear here" id="QIQB_Quiz_Data_Output"></textarea>
+            </div>
+            <div class="Subwindow_Bottom">
+                <div class="Subwindow_Bottom_Button_SecondaryAction" onclick="Subwindows_Close('QIQB_Quiz_ViewQuizData')">
+                    Close
+                </div>
+                <div class="Subwindow_Bottom_Button_PrimaryAction" onclick="QIQB_Quiz_CopyToClipboard()">
+                    Copy to clipboard
+                </div>
+            </div>
+        </div>
+        <div class="Modal" id="QIQB_Quiz_DownloadAsFile">
+			<div class="Modal_TitleBar">
+				<h2 class="Modal_TitleBar_Title">
+					Please wait
+				</h2>
+			</div>
+			<div class="Modal_Content">
+                <div class="General_Loading_Compact">
+                    <div class="General_Loading_Compact_Bar"></div>
+                    <div class="General_Loading_Compact_Bar"></div>
+                    <div class="General_Loading_Compact_Bar"></div>
+                    <div class="General_Loading_Compact_Bar"></div>
+                </div>
+				<p class="General_Paragraph">
+					The file is being downloaded. Please wait.
+				</p>
+			</div>
+			<div class="Modal_Content_Bottom">
+				<div class="Subwindow_Bottom_Button_PrimaryAction" onclick="Subwindows_Close('QIQB_Quiz_ViewQuizData')">
+					Close
+				</div>
+			</div>
+		</div>
+        <div class="Modal" id="QIQB_Error_NoFileName">
+			<div class="Modal_TitleBar">
+				<h2 class="Modal_TitleBar_Title">
+					Error
+				</h2>
+			</div>
+			<div class="Modal_Content">
+				<p class="General_Paragraph">
+					Please specify a file name.
+				</p>
+			</div>
+			<div class="Modal_Content_Bottom">
+				<div class="Subwindow_Bottom_Button_PrimaryAction" onclick="Subwindows_Close('QIQB_Quiz_ViewQuizQIQB_Error_NoFileNameData')">
+					Close
+				</div>
+			</div>
+		</div>
     </div>
     <div class="Toasts" Position="Right" id="Toasts">
         <!-- <div class="Toast">
@@ -229,7 +404,7 @@
                             Save quiz
                         </p>
                     </div>
-                    <div class="Header_PageNavigation_Menu_Button_Item">
+                    <div class="Header_PageNavigation_Menu_Button_Item" onclick="Subwindows_Open('QIQB_Quiz_Download'), Header_Toggle_PageNavigation()">
                         <img class='Header_PageNavigation_Menu_Button_Item_Icon' src='Assets/Icons/iconNew_download.png' draggable='false' loading='lazy'/>
                         <p class="Header_PageNavigation_Menu_Button_Item_Text">
                             Download quiz
@@ -308,13 +483,13 @@
     </header>
     <header class="Ribbon" id="Ribbon" Style_Margin_Sidebar="Enabled" Style_Margin_Header="Enabled">
         <div class="Ribbon_Section" id="Ribbon_QuizProper">
-			<div class="Ribbon_Section_Item">
+			<div class="Ribbon_Section_Item" onclick="QIQB_Question_Add()">
 				<img class="Ribbon_Section_Item_Icon" src="Assets/Icons/placeholder.png" />
 				<p class="Ribbon_Section_Item_Text">
 					Add question
 				</p>
 			</div>
-			<div class="Ribbon_Section_Item">
+			<div class="Ribbon_Section_Item" onclick="Subwindows_Open('QIQB_Question_Add_Rapid')">
 				<img class="Ribbon_Section_Item_Icon" src="Assets/Icons/placeholder.png" />
 				<p class="Ribbon_Section_Item_Text">
 					Add questions rapidly

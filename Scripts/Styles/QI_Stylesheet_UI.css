@@ -56,6 +56,10 @@
     margin: 10px;
 }
 
+.QI_Home_Github{
+    padding-bottom: 40px;
+}
+
 .QIQB_QuizItem{
     border: solid rgba(89, 89, 89, 0.25) 2px;
     border-radius: 5px;
@@ -93,4 +97,17 @@
 
 .QIQB_QuizItem_Controls_Icon:hover{
     background-color: var(--Accent-Color);
+}
+
+.QIQB_Quiz_Download{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 10px;
+}
+
+.Modal#QIQB_Quiz_DownloadAsFile > .Modal_Content{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }

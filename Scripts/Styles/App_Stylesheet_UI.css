@@ -1128,6 +1128,7 @@ body{
 	min-width: 250px;
 	transition: var(--Element-Transition-Delay);
 	display: none;
+	z-index: 150;
 }
 
 .Dropdown_List_Item{
