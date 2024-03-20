@@ -1,0 +1,46 @@
+{
+    "BasicInformation": [
+        "Quiz title",
+        "Quiz description",
+        "Quiz author",
+        "Coming soon in a sari-sari store near you"
+    ],
+    "Questions": [
+        {
+            "ID": 1,
+            "Question": "Question 1",
+            "Choices": [
+                "1a",
+                "1b",
+                "1c",
+                "1d"
+            ],
+            "Answer": "1",
+            "Answer_Explanation": "Coming soon in a sari-sari store near you"
+        },
+        {
+            "ID": 2,
+            "Question": "Question 2",
+            "Choices": [
+                "2a",
+                "2b",
+                "2c",
+                "2d"
+            ],
+            "Answer": "2",
+            "Answer_Explanation": "Coming soon in a sari-sari store near you"
+        },
+        {
+            "ID": 3,
+            "Question": "Question 3",
+            "Choices": [
+                "3a",
+                "3b",
+                "3c",
+                "3d"
+            ],
+            "Answer": "3",
+            "Answer_Explanation": "Coming soon in a sari-sari store near you"
+        }
+    ]
+}

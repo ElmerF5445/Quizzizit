@@ -140,7 +140,7 @@
 		</div>
         <div class="Modal" id="QIQB_ConfirmQuestionDeletion">
 			<div class="Modal_TitleBar">
-				<h2 class="Modal_TitleBar_Title">
+				<h2 class="Modal_TitleBar_Title" id="QIQB_ConfirmQuestionDeletion_Title">
 					Delete Question #1?
 				</h2>
 			</div>
@@ -499,6 +499,18 @@
 				<img class="Ribbon_Section_Item_Icon" src="Assets/Icons/placeholder.png" />
 				<p class="Ribbon_Section_Item_Text">
 					Help
+				</p>
+			</div>
+            <div class="Ribbon_Section_Item" onclick="QIQB_Quiz_Data_Save()">
+				<img class="Ribbon_Section_Item_Icon" src="Assets/Icons/placeholder.png" />
+				<p class="Ribbon_Section_Item_Text">
+					Save data to local storage
+				</p>
+			</div>
+            <div class="Ribbon_Section_Item" onclick="QIQB_Quiz_Data_Load()">
+				<img class="Ribbon_Section_Item_Icon" src="Assets/Icons/placeholder.png" />
+				<p class="Ribbon_Section_Item_Text">
+					Load data from local storage
 				</p>
 			</div>
 		</div>
