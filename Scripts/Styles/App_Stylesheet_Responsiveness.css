@@ -19,15 +19,12 @@
         --Element-ContentContainer-MarginnedWidth: calc(100% - 40px);
     }   
     .Ribbon{
-        height: 40px;
+        /* height: 50px; */
         /* width: fit-content; */
     }
+    .Ribbon_Section{
+        height: 35px;
 
-    .Input_Form[Label_Position = "Left"]{
-        display: grid;
-        grid-template-columns: auto;
-        grid-template-rows: auto;
-        grid-gap: 10px;
     }
 }
 
@@ -39,16 +36,24 @@
         left: 0px;
         width: 100%;
         bottom: 0px;
+        
         /* margin-bottom: 20px; */
     }
+    .Header_PageNavigation_Menu[State="Active"]{
+        display: flex;
+        flex-direction: column;
+    }
     .Header_StatusTray_Menu{
-        display: none;
         transform: translateX(-100%);
-        animation-name: unset;
-        animation-fill-mode: unset;
+        /* animation-name: unset;
+        animation-fill-mode: unset; */
         bottom: 0;
         width: calc(100% - 10px);
         /* padding-left: 20px; */
+    }
+    .Header_StatusTray_Menu[State="Active"]{
+        display: flex;
+        flex-direction: column;
     }
     .Header_StatusTray_Menu_Close{
         display: block;

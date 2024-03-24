@@ -46,16 +46,16 @@
 	--Text-Font-Numbers: Alexandria, "Arial", "Helvetica";
 	--Text-Color: white;
 	
-	--Accent-Color: #2747e7;
-	--Accent-Color-Hover: #3351e7;
-	--Accent-Color-Focus: #1b3ad8;
+	--Accent-Color: #4a27e7;
+	--Accent-Color-Hover: #5835f3;
+	--Accent-Color-Focus: #4a27e7;
 
 	--BG-Color-Scrollbar: transparent;
 	--BG-Color-Scrollbar-Thumb: var(--Accent-Color);
 	--BG-Color-Scrollbar-Thumb-Hover: var(--Accent-Color-Hover);
 	--BG-Color-Selection: var(--Accent-Color);
 
-	--BG-Color-General: #1e1e1e;
+	--BG-Color-General: #171010;
 	--BG-Color-General-Menus: #202020;
 	--BG-Color-LoadingScreen: #241c1c;
 	--BG-Color-LoadingScreen-Splash-NameSpace: #303030;

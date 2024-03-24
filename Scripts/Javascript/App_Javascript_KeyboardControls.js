@@ -36,6 +36,11 @@ document.addEventListener('keydown', (event) => {
 		}
 	}
 
+	if (keysPressed['Control'] && event.key == "Shift"){
+		event.preventDefault();
+		Projects_Save_Project();
+	}
+
 });
 
 document.addEventListener('keyup', (event) => {

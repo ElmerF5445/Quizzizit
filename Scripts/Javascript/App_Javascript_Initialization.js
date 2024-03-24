@@ -15,7 +15,9 @@ let App_Info = {
     // Copyright text that appears in certain menu and screen elements
     Copyright_Title: "Content By ElmerF 2024",
     // Content By ElmerF logo
-    Copyright_Icon: "Assets/Icons/favicon.png"
+    Copyright_Icon: "Assets/Icons/favicon.png",
+    // Prefix that will be used by modules that use local and session storage
+    Key_Prefix: "QI"
 }
 
 /* App Properties */

@@ -20,6 +20,7 @@
     <script src="Scripts/FileSaver.js" defer></script>
     <script src="Scripts/Javascript/QI_Quiz_Builder.js" defer></script>
     <script src="Scripts/Javascript/App_Javascript_Initialization.js" defer></script>
+    <script src="Scripts/Javascript/App_Javascript_Projects.js" defer></script>
     <div class="LoadingScreen" id="LoadingScreen">
         <div class="LoadingScreen_Simple" id="LoadingScreen_Simple" Display="none">
             <div class="LoadingScreen_Simple_Main">
@@ -353,6 +354,141 @@
 				</div>
 			</div>
 		</div>
+        <div class="Subwindow Projects" id="Projects_List_Window">
+            <div class="Subwindow_TitleBar">
+                <h2 class="Subwindow_TitleBar_Title">
+                    Projects
+                </h2>
+                <img class='Subwindow_TitleBar_Close' src='Assets/Icons/icon_close.png' draggable='false' loading='lazy' onclick="Subwindows_Close(this.parentNode.parentNode.id)"/>
+            </div>
+            <div class="Subwindow_Content">
+                <h3 class="General_Title">
+                    Currently loaded project
+                </h3>
+                <div class="Projects_CurrentlyLoaded">
+                    <div class="Projects_CurrentlyLoaded_Information">
+                        <h3 class="Projects_CurrentlyLoaded_Information_Title" id="Projects_CurrentlyLoaded_Information_Title">
+                            No project loaded
+                        </h3>
+                        <div class="Projects_CurrentlyLoaded_Information_Details">
+                            <p class="Projects_CurrentlyLoaded_Information_Details_Item" id="Projects_CurrentlyLoaded_Information_Status">
+                                Select a project below or create a new one to start saving your progress.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="Projects_CurrentlyLoaded_Controls" id="Projects_CurrentlyLoaded_Controls">
+                        <!-- Program using the Projects system must add their own onclick trigger here or something -->
+                        <div class="Projects_CurrentlyLoaded_Controls_Item">
+                            <img class='Projects_CurrentlyLoaded_Controls_Item_Icon' src='Assets/Icons/icon_project_save.png' draggable='false' loading='lazy'/>
+                        </div>
+                        <div class="Projects_CurrentlyLoaded_Controls_Item" onclick="Projects_Save_Project()">
+                            <img class='Projects_CurrentlyLoaded_Controls_Item_Icon' src='Assets/Icons/iconNew_save.png' draggable='false' loading='lazy'/>
+                        </div>
+                    </div>
+                </div>
+                <h3 class="General_Title">
+                    Recent projects
+                </h3>
+                <div class="Projects_List" id="Projects_List">
+                    <div class="Projects_List_Item">
+                        <div class="Projects_List_Item_Information">
+                            <h3 class="Projects_List_Item_Information_Title">
+                                Project name
+                            </h3>
+                            <div class="Projects_List_Item_Information_Details">
+                                <p class="Projects_List_Item_Information_Details_Item">
+                                    21 March 2023; 11:26 PM
+                                </p>
+                                <p class="Projects_List_Item_Information_Details_Item">
+                                    ERUMA UI 1.0
+                                </p>
+                            </div>
+                        </div>
+                        <div class="Projects_List_Item_Controls">
+                            <div class="Projects_List_Item_Controls_Item">
+                                <img class='Projects_List_Item_Controls_Item_Icon' src='Assets/Icons/icon_download.png' draggable='false' loading='lazy'/>
+                            </div>
+                            <div class="Projects_List_Item_Controls_Item">
+                                <img class='Projects_List_Item_Controls_Item_Icon' src='Assets/Icons/iconNew_delete.png' draggable='false' loading='lazy'/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="Subwindow_Bottom">
+                <div class="Subwindow_Bottom_Button_SecondaryAction" onclick="Subwindows_Close('Projects_List_Window')">
+                    Close
+                </div>
+                <div class="Subwindow_Bottom_Button_SecondaryAction" onclick="Subwindows_Open('Projects_Open_Project_FromFile')">
+                    Open project from file
+                </div>
+                <div class="Subwindow_Bottom_Button_PrimaryAction" onclick="Subwindows_Open('Projects_Create_NewProject')">
+                    New project
+                </div>
+            </div>
+        </div>
+        <div class="Modal" id="Projects_Create_NewProject">
+			<div class="Modal_TitleBar">
+				<h2 class="Modal_TitleBar_Title">
+					Create new project
+				</h2>
+			</div>
+			<div class="Modal_Content">
+				<p class="General_Paragraph">
+					Specify a project name below. The data will be stored in your browser.
+				</p>
+                <input class="Input_Text" type="text" id="Projects_Create_NewProject_Name" placeholder="Project name" oninput="Projects_Check_Input(this.id, 'Projects_Create_NewProject_Name_Consequence')"/>
+			</div>
+			<div class="Modal_Content_Bottom">
+				<div class="Subwindow_Bottom_Button_SecondaryAction" onclick="Subwindows_Close('Projects_Create_NewProject')">
+                    Cancel
+				</div>
+				<div class="Subwindow_Bottom_Button_PrimaryAction" id="Projects_Create_NewProject_Name_Consequence" onclick="Projects_Create_NewProject_Check_Existence()" Clickability="Disabled">
+					Create project
+				</div>
+			</div>
+		</div>
+        <div class="Modal" id="Projects_Create_NewProject_Overwrite">
+			<div class="Modal_TitleBar">
+				<h2 class="Modal_TitleBar_Title">
+					Project name already exists
+				</h2>
+			</div>
+			<div class="Modal_Content">
+				<p class="General_Paragraph">
+                    The project name already exists. You can choose to overwrite the data in it or rename your project to a name that doesn't exist yet.
+				</p>
+			</div>
+			<div class="Modal_Content_Bottom">
+				<div class="Subwindow_Bottom_Button_SecondaryAction" onclick="Subwindows_Close('Projects_Create_NewProject_Overwrite')">
+                    Cancel
+				</div>
+				<div class="Subwindow_Bottom_Button_PrimaryAction" onclick="Projects_Create_NewProject_Overwrite_ExistingProject()">
+					Overwrite project
+				</div>
+			</div>
+		</div>
+        <div class="Modal" id="Projects_Open_Project_FromFile">
+			<div class="Modal_TitleBar">
+				<h2 class="Modal_TitleBar_Title">
+					Open project from file
+				</h2>
+			</div>
+			<div class="Modal_Content">
+				<p class="General_Paragraph">
+                    Add a valid .JSON file below that contains the project data. The system will automatically save it into your local storage as a new project.
+				</p>
+                <input type="file" id="Projects_Open_Project_FromFile_Input" accept=".json" class="Input_Text"/>
+			</div>
+			<div class="Modal_Content_Bottom">
+				<div class="Subwindow_Bottom_Button_SecondaryAction" onclick="Subwindows_Close('Projects_Open_Project_FromFile')">
+                    Cancel
+				</div>
+				<div class="Subwindow_Bottom_Button_PrimaryAction" onclick="Projects_Upload_Project()">
+					Save to local storage
+				</div>
+			</div>
+		</div>
     </div>
     <div class="Toasts" Position="Right" id="Toasts">
         <!-- <div class="Toast">
@@ -373,7 +509,7 @@
 					placeholder="Enter console command and press Enter"></input>
 			</div>
 		</div>
-        <div class="Header_PageNavigation_Menu" id="Header_PageNavigation_Menu" style="display: none">
+        <div class="Header_PageNavigation_Menu" id="Header_PageNavigation_Menu" State="Inactive">
             <div class="Header_PageNavigation_Menu_Navigation Header_PageNavigation_Menu_Content">
                 <h1 class="Header_PageNavigation_Menu_Title" id="Header_PageNavigation_Menu_Title">
                     ERUMA UI 1.0
@@ -398,10 +534,10 @@
                     Page Actions
                 </h1>
                 <div class="Header_PageNavigation_Menu_Buttons">
-                    <div class="Header_PageNavigation_Menu_Button_Item">
-                        <img class='Header_PageNavigation_Menu_Button_Item_Icon' src='Assets/Icons/iconNew_save.png' draggable='false' loading='lazy'/>
+                    <div class="Header_PageNavigation_Menu_Button_Item" onclick="Projects_Open_ProjectList(), Header_Toggle_PageNavigation()">
+                        <img class='Header_PageNavigation_Menu_Button_Item_Icon' src='Assets/Icons/iconNew_folder.png' draggable='false' loading='lazy'/>
                         <p class="Header_PageNavigation_Menu_Button_Item_Text">
-                            Save quiz
+                            File
                         </p>
                     </div>
                     <div class="Header_PageNavigation_Menu_Button_Item" onclick="Subwindows_Open('QIQB_Quiz_Download'), Header_Toggle_PageNavigation()">
@@ -413,7 +549,7 @@
                 </div>
             </div>
         </div>
-        <div class="Header_StatusTray_Menu" id="Header_StatusTray_Menu" style="display: none">
+        <div class="Header_StatusTray_Menu" id="Header_StatusTray_Menu" State="Inactive">
             <img class='Header_StatusTray_Menu_Close' src='Assets/Icons/icon_close.png' draggable='false' loading='lazy' onclick="Header_Toggle_StatusTray()"/>
             <div class="Header_StatusTray_Menu_Clock Header_StatusTray_Menu_Content">
                 <h1 class="Header_StatusTray_Menu_Clock_Clock" id="Header_StatusTray_Menu_Clock_Clock">
@@ -483,7 +619,13 @@
     </header>
     <header class="Ribbon" id="Ribbon" Style_Margin_Sidebar="Enabled" Style_Margin_Header="Enabled">
         <div class="Ribbon_Section" id="Ribbon_QuizProper">
-			<div class="Ribbon_Section_Item" onclick="QIQB_Question_Add()">
+			<div class="Ribbon_Section_Item" onclick="Projects_Open_ProjectList()">
+				<img class="Ribbon_Section_Item_Icon" src="Assets/Icons/placeholder.png" />
+				<p class="Ribbon_Section_Item_Text">
+					File
+				</p>
+			</div>
+            <div class="Ribbon_Section_Item" onclick="QIQB_Question_Add()">
 				<img class="Ribbon_Section_Item_Icon" src="Assets/Icons/placeholder.png" />
 				<p class="Ribbon_Section_Item_Text">
 					Add question
@@ -587,7 +729,7 @@
                                 <label class="Input_Label" for="BI_Quiz_Description">
                                     Quiz description: 
                                 </label>
-                                <textarea type="text" class="Input_Text_Long" id="BI_Quiz_Description" autocomplete="off" placeholder="Quiz description"></textarea>
+                                <textarea type="text" class="Input_Text_Long" id="BI_Quiz_Description" autocomplete="off" placeholder="Quiz description" Autoresize="true"></textarea>
         
                                 <label class="Input_Label" for="BI_Quiz_Author">
                                     Author: 

@@ -497,7 +497,7 @@ body{
     height: auto;
     backdrop-filter: var(--Element-BackdropBlur);
     border: solid var(--Color-Borders);
-    display: grid;
+    display: none;
     grid-template-rows: auto auto;
     padding-bottom: 10px;
     border-radius: 0px 0px 5px 5px;
@@ -505,8 +505,15 @@ body{
 	max-height: 100%;
 	overflow-x: hidden;
 	overflow-y: auto;
+	animation-duration: 0.3s;
+	animation-fill-mode: forwards;
 	animation-timing-function: ease-out;
 	/* margin-bottom: 150px; */
+}
+
+.Header_PageNavigation_Menu[State="Active"]{
+	display: grid;
+	animation-name: Overlays_Menu_Open;
 }
 
 
@@ -579,14 +586,22 @@ body{
     height: auto;
     backdrop-filter: var(--Element-BackdropBlur);
     border: solid var(--Color-Borders);
-    display: grid;
+    display: none;
     grid-template-rows: auto auto auto;
     padding: 5px;
     border-radius: 0px 0px 5px 5px;
 	overflow-y: auto;
 	overflow-x: hidden;
     box-shadow: var(--Element-BoxShadow);
+	animation-duration: 0.3s;
+	animation-fill-mode: forwards;
 	animation-timing-function: ease-out;
+	/* margin-bottom: 150px; */
+}
+
+.Header_StatusTray_Menu[State="Active"]{
+	display: grid;
+	animation-name: Overlays_Menu_Open;
 }
 
 .Header_StatusTray_Menu_Close{
@@ -647,11 +662,13 @@ body{
     flex-direction: row;
     margin-left: 0;
 	overflow-x: auto;
+	overflow-y: hidden;
     /* opacity: 50%; */
 }
 
 .Ribbon[Style_Margin_Sidebar="Enabled"]{
     margin-left: 53px;
+	width: calc(100% - 53px);
 }
 
 .Ribbon[Style_Margin_Header="Enabled"]{
@@ -674,6 +691,11 @@ body{
     margin-right: 5px;
     padding-left: 5px;
     padding-right: 5px;
+}
+
+.Ribbon_Section_Item:active{
+	transform: scale(0.95);
+	background-color: var(--BG-Color-Button-General-Focus);
 }
 
 .Ribbon_Section_Item_Icon{
@@ -1128,7 +1150,6 @@ body{
 	min-width: 250px;
 	transition: var(--Element-Transition-Delay);
 	display: none;
-	z-index: 150;
 }
 
 .Dropdown_List_Item{
@@ -1524,6 +1545,11 @@ body{
 	font-size: 17px;
 	text-align: center;
 	transition: var(--Element-Transition-Delay);
+	align-items: center;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
 }
 
 
@@ -1548,6 +1574,10 @@ body{
 	font-size: 17px;
 	text-align: center;
 	transition: var(--Element-Transition-Delay);
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
 }
 
 
@@ -1700,6 +1730,149 @@ body{
 	grid-area: 2 / 2 / 3 / 3; 
 }
 
+.Projects{
+	/* max-width: 90%; */
+	/* min-width: 600px; */
+	/* max-height: 90%; */
+	min-height: 350px;
+}
+
+.Projects_List{
+	display: flex;
+	flex-direction: column;
+	/* background-color: blue; */
+}
+
+.Projects_List_Item{
+	display: grid;
+	grid-template-columns: 1fr auto;
+	align-item: center;
+	padding: 10px;
+	border-radius: 5px;
+	background-color: var(--BG-Color-Button-General);
+	color: var(--Text-Color);
+	outline: none;
+	border-style: solid;
+	border-color: var(--BG-Color-Button-General-Accent);
+	border-width: 2px;
+	cursor: pointer;
+	margin-bottom: 10px;
+}
+
+.Projects_List_Item:hover{
+	border-color: var(--BG-Color-Button-General-Accent-Hover);
+}
+
+.Projects_List_Item_Information{
+	display: flex;
+	flex-direction: column;
+}
+
+.Projects_List_Item_Information:hover{
+	background-color: var(--BG-Color-Button-General-Hover);
+}
+
+.Projects_List_Item_Information_Title{
+	font-family: var(--Text-Font-Primary);
+	margin: 0;
+	font-size: 25px;
+}
+
+.Projects_List_Item_Information_Details{
+	display: flex;
+	flex-direction: row;
+}
+
+.Projects_List_Item_Information_Details_Item{
+	font-family: var(--Text-Font-Secondary);
+	margin: 0;
+	padding: 5px;
+	padding-left: 0px;
+	opacity: 25%;
+}
+
+.Projects_List_Item_Information_Details_Item:not(:nth-child(1)){
+	padding-left: 5px;
+	border-left: solid var(--Color-Borders) 2px;	
+}
+
+.Projects_List_Item_Controls{
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+
+.Projects_List_Item_Controls_Item{
+	border-radius: 5px;
+	padding: 5px;
+	cursor: pointer;
+}
+
+
+.Projects_List_Item_Controls_Item:hover{
+	background-color: var(--BG-Color-Button-General-Hover);
+}
+
+.Projects_List_Item_Controls_Item_Icon{
+	height: 30px;
+}
+
+.Projects_CurrentlyLoaded{
+	display: grid;
+	grid-template-columns: 1fr auto;
+	align-item: center;
+	padding: 10px;
+	/* border-radius: 5px; */
+	color: var(--Text-Color);
+	border-top: solid var(--Color-Borders);
+	border-bottom: solid var(--Color-Borders);
+}
+
+.Projects_CurrentlyLoaded_Information{
+	display: flex;
+	flex-direction: column;
+}
+
+.Projects_CurrentlyLoaded_Information_Title{
+	font-family: var(--Text-Font-Primary);
+	margin: 0;
+	font-size: 25px;
+}
+
+.Projects_CurrentlyLoaded_Information_Details{
+	display: flex;
+	flex-direction: row;
+}
+
+.Projects_CurrentlyLoaded_Information_Details_Item{
+	font-family: var(--Text-Font-Secondary);
+	margin: 0;
+	padding: 5px;
+	padding-left: 0px;
+	opacity: 25%;
+}
+
+.Projects_CurrentlyLoaded_Controls{
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	display: none;
+}
+
+.Projects_CurrentlyLoaded_Controls_Item{
+	border-radius: 5px;
+	padding: 5px;
+	cursor: pointer;
+}
+
+.Projects_CurrentlyLoaded_Controls_Item:hover{
+	background-color: var(--BG-Color-Button-General-Hover);
+}
+
+.Projects_CurrentlyLoaded_Controls_Item_Icon{
+	height: 30px;
+}
+
 .General_Title{
     font-family: var(--Text-Font-Primary);
     /* margin: 0; */
@@ -1832,4 +2005,10 @@ body{
 
 *[Display="grid"]{
     display: grid;
+}
+
+*[Clickability="Disabled"]{
+	pointer-events: none;
+	opacity: 50%;
+	cursor: not-allowed;
 }

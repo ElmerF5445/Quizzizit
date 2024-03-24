@@ -7,26 +7,29 @@ function LoadingScreen_Show(){
 }
 
 function Header_Toggle_PageNavigation(){
-    if (document.getElementById("Header_PageNavigation_Menu").style.display == "none"){
-        Element_Style_Display("Header_PageNavigation_Menu", "grid");
+    if (Element_Attribute_Get("Header_PageNavigation_Menu", "State") == "Inactive"){
+        // Element_Style_Display("Header_PageNavigation_Menu", "grid");
+		Element_Attribute_Set("Header_PageNavigation_Menu", "State", "Active");
         Element_Style_Animate("Header_PageNavigation_Menu", "Overlays_Menu_Open", "0.3s", "forwards");
 		Element_Style_Animate_Batch_QuerySelector(".Header_PageNavigation_Menu_Content", "Overlays_Menu_Content_Open", "0.3s", "forwards", "1", 200);
-    } else if (document.getElementById("Header_PageNavigation_Menu").style.display == "grid"){
+    } else if (Element_Attribute_Get("Header_PageNavigation_Menu", "State") == "Active"){
         Element_Style_Animate("Header_PageNavigation_Menu", "Overlays_Menu_Close", "0.3s", "forwards");
+		// Element_Attribute_Set("Header_PageNavigation_Menu", "State", "Inactive");
 		Element_Style_Animate_Batch_QuerySelector(".Header_PageNavigation_Menu_Content", "Overlays_Menu_Content_Close", "0.3s", "forwards", "1", 200);
-        setTimeout(function(){Element_Style_Display("Header_PageNavigation_Menu", "none")}, 300);
+        setTimeout(function(){Element_Attribute_Set("Header_PageNavigation_Menu", "State", "Inactive");}, 300);
     }
 }
 
 function Header_Toggle_StatusTray(){
-    if (document.getElementById("Header_StatusTray_Menu").style.display == "none"){
-        Element_Style_Display("Header_StatusTray_Menu", "grid");
+    if (Element_Attribute_Get("Header_StatusTray_Menu", "State") == "Inactive"){
+        // Element_Style_Display("Header_StatusTray_Menu", "grid");
+		Element_Attribute_Set("Header_StatusTray_Menu", "State", "Active");
         Element_Style_Animate("Header_StatusTray_Menu", "Overlays_Menu_Open", "0.3s", "forwards");
 		Element_Style_Animate_Batch_QuerySelector(".Header_StatusTray_Menu_Content", "Overlays_Menu_Content_Open", "0.3s", "forwards", "1", 200);
-    } else if (document.getElementById("Header_StatusTray_Menu").style.display == "grid"){
+    } else if (Element_Attribute_Get("Header_StatusTray_Menu", "State") == "Active"){
         Element_Style_Animate("Header_StatusTray_Menu", "Overlays_Menu_Close", "0.3s", "forwards");
 		Element_Style_Animate_Batch_QuerySelector(".Header_StatusTray_Menu_Content", "Overlays_Menu_Content_Close", "0.3s", "forwards", "1", 200);
-        setTimeout(function(){Element_Style_Display("Header_StatusTray_Menu", "none")}, 300);
+        setTimeout(function(){Element_Attribute_Set("Header_StatusTray_Menu", "State", "Inactive");}, 300);
     }
 }
 
@@ -307,7 +310,7 @@ function Dropdown_ToggleList(ID){
 var Dropdown_TargetButton;
 function Dropdown_SubmitValue(ParentNode, InnerText){
 	Dropdown_TargetButton = ParentNode.getAttribute("Dropdown_TargetButton");
-	document.getElementById(Dropdown_TargetButton).innerText = InnerText;
+	document.getElementById(Dropdown_TargetButton).querySelector(".Dropdown_Button_Text").innerText = InnerText;
 	document.getElementById(Dropdown_TargetButton).click();
 }
 
@@ -420,3 +423,15 @@ function Toasts_CloseToast(ID){
 		Toast_Div.style.display = "none";
 	}, 300);
 }
+
+window.addEventListener('DOMContentLoaded', () => {
+	let TextAreas = document.querySelectorAll(".Input_Text_Long");
+	TextAreas.forEach(TextArea_Element => {
+		if (TextArea_Element.getAttribute("Autoresize") == "true"){
+			TextArea_Element.addEventListener('input', function(){
+				this.style.height = 'auto';
+				this.style.height = ((this.scrollHeight) - 20) + 'px';
+			});
+		}
+	});
+});

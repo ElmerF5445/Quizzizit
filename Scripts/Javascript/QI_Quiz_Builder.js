@@ -278,7 +278,7 @@ function QIQB_Quiz_Generate_List(){
                 <img class='QIQB_QuizItem_Controls_Icon' src='Assets/Icons/iconNew_delete.png' draggable='false' loading='lazy' onclick="QIQB_Question_Delete_Confirm(${a})"/>
             </div>
 
-            <textarea type="text" class="Input_Text QIQB_QuizItem_Question" id="QIQB_QuizItem_Question_${a}" autocomplete="off" placeholder="Question" onchange="QIQB_Question_SaveProgress()">${QIQB_Quiz_Data.Questions[a].Question}</textarea>
+            <textarea type="text" class="Input_Text QIQB_QuizItem_Question" id="QIQB_QuizItem_Question_${a}" autocomplete="off" placeholder="Question" onchange="QIQB_Question_SaveProgress()" Autoresize="true">${QIQB_Quiz_Data.Questions[a].Question}</textarea>
 
             <div class="Radio" id="QIQB_QuizItem_Choices_${a}" Radio_ActiveButton="QIQB_QuizItem_Choices_${a}_${QIQB_Quiz_Data.Questions[a].Answer}">
                 <div class="Radio_Button" id="QIQB_QuizItem_Choices_${a}_1" onclick="Radio_Select(this.id), QIQB_Question_SaveProgress()" State="Inactive">
@@ -324,12 +324,15 @@ function QIQB_Quiz_Generate_List(){
 
 function QIQB_Quiz_Data_Save(){
     QIQB_Question_SaveProgress();
-    localStorage.setItem("QIQB_QuizData_Temp", JSON.stringify(QIQB_Quiz_Data));
+    Projects_Save_Progress(QIQB_Quiz_Data);
+    Projects_Save_Project();
+    // localStorage.setItem("QIQB_QuizData_Temp", JSON.stringify(QIQB_Quiz_Data));
     Toasts_CreateToast("Assets/Icons/placeholder.png", "Saved data to local storage", "Data successfully saved.");
 }
 
 function QIQB_Quiz_Data_Load(){
-    QIQB_Quiz_Data = JSON.parse(localStorage.getItem("QIQB_QuizData_Temp"));
+    QIQB_Quiz_Data = Projects_CurrentlyLoadedProject_Data;
+    // QIQB_Quiz_Data = JSON.parse(localStorage.getItem("QIQB_QuizData_Temp"));
     Toasts_CreateToast("Assets/Icons/placeholder.png", "Loaded data from local storage", "Data successfully loaded.");
     QIQB_Quiz_Generate_List();
 }
